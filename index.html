@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="mr" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>वाढदिवसाच्या हार्दिक शुभेच्छा, आजोबा! | श्री. रवींद्र सदाशिव पवार (७६ वा वाढदिवस)</title>
+  
+  <!-- SEO & Social Meta Tags -->
+  <meta name="description" content="श्री. रवींद्र सदाशिव पवार यांच्या ७६ व्या वाढदिवसानिमित्त कौटुंबिक आठवणी, संगीतमय शुभेच्छा आणि खास सरप्राइझने सजवलेली मराठी डिजिटल भेट.">
+  <meta name="author" content="नातवंडे व पवार परिवार">
+  <meta name="theme-color" content="#FAF5EC">
+  <meta property="og:title" content="वाढदिवसाच्या हार्दिक शुभेच्छा, आजोबा! — श्री. रवींद्र सदाशिव पवार">
+  <meta property="og:description" content="आठवणींचा सुंदर प्रवास — आपल्या लाडक्या आजोबांसाठी ७६ व्या वाढदिवसाची खास भेट.">
+  <meta property="og:type" content="website">
+  
+  <!-- Google Fonts: Rozha One, Yatra One, Tiro Devanagari Marathi, Poppins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Rozha+One&family=Tiro+Devanagari+Marathi:ital@0;1&family=Yatra+One&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Floating Audio Player Bar -->
+  <aside id="audio-widget" class="audio-widget" aria-label="संगीताचे नियंत्रक">
+    <div class="audio-widget-content">
+      <div class="audio-track-info">
+        <span class="audio-pulse-icon" id="audio-pulse-indicator" aria-hidden="true">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </span>
+        <div class="audio-text-group">
+          <span class="audio-title">वाढदिवसाचं गाणं (English)</span>
+          <span class="audio-time" id="audio-time-display">0:00 / 0:34</span>
+        </div>
+      </div>
+
+      <div class="audio-controls-group">
+        <button id="audio-play-btn" class="audio-ctrl-btn" type="button" aria-label="गाणं सुरू किंवा बंद करा" title="गाणं सुरू/बंद करा">
+          <svg class="icon-play" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+            <path d="M8 5v14l11-7z"/>
+          </svg>
+          <svg class="icon-pause" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+            <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+          </svg>
+          <span class="ctrl-label" id="audio-play-label">ऐका</span>
+        </button>
+
+        <button id="audio-mute-btn" class="audio-ctrl-btn icon-only" type="button" aria-label="आवाज म्यूट करा" title="आवाज बंद/चालू">
+          <svg class="icon-volume-high" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+            <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+          </svg>
+          <svg class="icon-volume-muted" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+            <path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/>
+          </svg>
+        </button>
+
+        <div class="volume-slider-wrap" title="आवाज पातळी">
+          <input type="range" id="audio-volume-slider" min="0" max="1" step="0.05" value="0.8" aria-label="आवाज पातळी नियंत्रक">
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Autoplay Blocked Fallback Notification Banner -->
+  <div id="autoplay-banner" class="autoplay-banner" role="alert" aria-live="polite">
+    <div class="autoplay-banner-inner">
+      <span class="music-note-badge" aria-hidden="true">🎵</span>
+      <div class="autoplay-banner-text">
+        <strong>आजोबांच्या वाढदिवसाचे खास गाणे तयार आहे!</strong>
+        <span>सुंदर संगीतमय अनुभवासाठी खालील बटणावर क्लिक करा.</span>
+      </div>
+      <button id="autoplay-start-btn" class="btn-royal-pulse" type="button">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
+          <path d="M8 5v14l11-7z"/>
+        </svg>
+        वाढदिवसाचं गाणं ऐका
+      </button>
+      <button id="autoplay-dismiss-btn" class="btn-dismiss" type="button" aria-label="सूचना बंद करा">✕</button>
+    </div>
+  </div>
+
+  <!-- Traditional Decorative Top Strip -->
+  <div class="rangoli-top-border" aria-hidden="true"></div>
+
+  <!-- SECTION 1: HERO / OPENING SCREEN -->
+  <header id="opening-screen" class="hero-section">
+    <div class="hero-ornament-top" aria-hidden="true">
+      <span class="auspicious-symbol">॥ श्री गणेशाय नमः ॥</span>
+    </div>
+
+    <div class="hero-container">
+      <div class="hero-badge">
+        <span class="gold-star">✦</span>
+        <span>अमृतमय ७६ वा वाढदिवस</span>
+        <span class="gold-star">✦</span>
+      </div>
+
+      <h1 class="hero-title">
+        वाढदिवसाच्या हार्दिक शुभेच्छा, आजोबा!
+      </h1>
+
+      <p class="hero-honoree">
+        <span class="title-prefix">आदरणीय</span>
+        <span class="name-highlight">श्री. रवींद्र सदाशिव पवार</span>
+      </p>
+
+      <div class="hero-milestone-card">
+        <div class="milestone-pill">
+          <span class="milestone-number">७६</span>
+          <span class="milestone-text">वा वाढदिवस</span>
+        </div>
+        <div class="milestone-divider" aria-hidden="true"></div>
+        <div class="milestone-date">
+          <span class="date-icon" aria-hidden="true">🗓️</span>
+          <span>१६ ऑक्टोबर १९५० — १६ ऑक्टोबर २०२६</span>
+        </div>
+      </div>
+
+      <p class="hero-tagline">
+        “आठवणींचा सुंदर प्रवास — आपल्या लाडक्या आजोबांसाठी”
+      </p>
+
+      <!-- Hero Featured Portrait -->
+      <div class="hero-portrait-wrapper">
+        <div class="golden-frame">
+          <img src="Family Photographs/1000329573.jpg" 
+               alt="श्री. रवींद्र सदाशिव पवार - ७६ व्या वाढदिवसाचे मुख्य छायाचित्र" 
+               class="hero-portrait-img"
+               loading="eager"
+               id="hero-img">
+        </div>
+        <div class="frame-caption">
+          <span>श्री. रवींद्र सदाशिव पवार (आजोबा)</span>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="hero-actions">
+        <a href="#surprise-section" class="btn-primary-gold" id="btn-hero-surprise">
+          <span class="btn-icon" aria-hidden="true">🎁</span>
+          <span>तुमच्यासाठी एक खास सरप्राइझ</span>
+        </a>
+        <a href="#greeting-section" class="btn-secondary-outline">
+          <span class="btn-icon" aria-hidden="true">💌</span>
+          <span>शुभेच्छा पत्र वाचा</span>
+        </a>
+      </div>
+
+      <div class="scroll-indicator" aria-hidden="true">
+        <a href="#greeting-section" class="scroll-link" aria-label="खाली स्क्रोल करा">
+          <span>खाली पहा</span>
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+            <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- SECTION 2: GREETING & BIRTHDAY LETTER -->
+  <section id="greeting-section" class="section-greeting" aria-labelledby="greeting-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-sub">आदराचे आणि प्रेमाचे शब्द</span>
+        <h2 id="greeting-heading" class="section-title">लाडक्या आजोबांना सप्रेम वाढदिवस वंदन</h2>
+        <div class="gold-flourish" aria-hidden="true">❧ ❖ ❧</div>
+      </div>
+
+      <!-- Main Highlight Greeting Card -->
+      <div class="greeting-highlight-card">
+        <div class="quote-mark" aria-hidden="true">“</div>
+        <blockquote class="highlight-quote">
+          आमचे लाडके आजोबा,<br>
+          तुमच्या आयुष्यात आनंद, उत्तम आरोग्य, समाधान आणि प्रेम नेहमी भरभरून राहो. तुमचा प्रत्येक दिवस आनंदाने आणि सुंदर क्षणांनी भरलेला असो.
+        </blockquote>
+        <div class="quote-signature">— आपला समस्त परिवार</div>
+      </div>
+
+      <!-- Traditional Parchment Birthday Letter -->
+      <article class="birthday-letter-card">
+        <div class="parchment-border-inner">
+          <header class="letter-header">
+            <span class="letter-date">वार: शुक्रवार | दिनांक: १६ ऑक्टोबर २०२६</span>
+            <h3 class="letter-salutation">आदरणीय आणि आमचे लाडके आजोबा,</h3>
+          </header>
+
+          <div class="letter-body">
+            <p>
+              आज तुमचा <strong>७६ वा वाढदिवस!</strong> हा दिवस आम्हा सर्वांसाठी केवळ एक तारीख नसून आमच्या संपूर्ण पवार कुटुंबाचा सर्वात मोठा आनंदाचा सण आहे. <strong>१६ ऑक्टोबर १९५०</strong> रोजी सुरू झालेला तुमचा हा जीवनप्रवास संयम, मेहनत, अखंड माया आणि संस्कारांचा एक दीपस्तंभ आहे.
+            </p>
+            <p>
+              आजोबा, तुम्ही आमच्या कुटुंबाचा भक्कम <strong>आधारवड</strong> आहात. जसा विशाल वटवृक्ष आपल्या घनदाट सावलीत वाटसरूंना शांतता देतो, तसेच तुम्ही तुमच्या अथांग मायेने आम्हा सर्वांना नेहमी सुरक्षित आणि एकसंध ठेवले आहे.
+            </p>
+            <p>
+              तुमच्या चेहऱ्यावरील प्रसन्न आणि शांत हास्य, डोळ्यांमधील आपुलकी आणि प्रत्येकाविषयी मनात असलेली काळजी आम्हा सर्वांना नेहमीच नवी उमेद देते. तुम्ही आम्हा नातवंडांवर केलेले संस्कार, दिलेली जीवनमूल्ये आणि वेळोवेळी केलेले मार्गदर्शन हीच आमच्या आयुष्यातील सर्वात अमूल्य ठेव आहे.
+            </p>
+            <p>
+              कधी मित्रासारखे बोलताना, तर कधी मोठ्या माणसाच्या अधिकाराने पाठीवर मायेचा हात ठेवताना आम्हाला नेहमी तुमच्या प्रेमाची अनुभूती मिळाली. या पवित्र मंगलदिनी देवाच्या चरणी आम्ही हीच मनोभावे प्रार्थना करतो की:
+            </p>
+            <div class="letter-blessing-box">
+              <p>
+                <strong>“तुम्हाला उदंड आणि निरोगी दीर्घायुष्य लाभो, तुमचे मन सदैव प्रसन्न राहो आणि आयुष्यातील प्रत्येक क्षण समाधान आणि शांतीने बहरून येवो!”</strong>
+              </p>
+            </div>
+            <p>
+              तुमचा आशीर्वाद आमच्या मस्तकावर सदैव असाच कायम राहो. तुमच्या ७६ व्या वाढदिवसाच्या तुम्हाला लाख लाख आणि मनःपूर्वक शुभेच्छा!
+            </p>
+          </div>
+
+          <footer class="letter-footer">
+            <div class="letter-signoff">
+              <span>आपली लाडकी नातवंडे, मुले-मुली, सुना</span>
+              <strong>आणि समस्त पवार परिवार</strong>
+            </div>
+          </footer>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- SECTION 3: FIVE FAMILY PHOTOGRAPHS GALLERY -->
+  <section id="gallery-section" class="section-gallery" aria-labelledby="gallery-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-sub">सुवर्ण आठवणींचा अल्बम</span>
+        <h2 id="gallery-heading" class="section-title">आपल्या लाडक्या आजोबांचे सुंदर क्षण</h2>
+        <div class="gold-flourish" aria-hidden="true">❧ ❖ ❧</div>
+        <p class="section-description">
+          प्रत्येक छायाचित्र म्हणजे प्रेमाची, संस्कारांची आणि आनंदाची जिवंत साक्ष. कोणत्याही छायाचित्रावर क्लिक करून ते मोठे करून पहा.
+        </p>
+      </div>
+
+      <!-- Grid of All 5 Photographs -->
+      <div class="gallery-grid" id="gallery-grid" role="region" aria-label="छायाचित्रांचा संग्रह">
+        
+        <!-- Photo 1 -->
+        <figure class="gallery-card" data-index="0" tabindex="0" role="button" aria-label="छायाचित्र १ मोठे करा: नातवाचा लाड आणि आजोबांचा प्रेमळ सहवास">
+          <div class="gallery-img-container">
+            <img src="Family Photographs/1000329570.jpg" 
+                 alt="आजोबा श्री. रवींद्र पवार आणि त्यांचा नातू एकत्र बसलेले छायाचित्र" 
+                 loading="lazy" 
+                 class="gallery-img">
+            <div class="gallery-overlay" aria-hidden="true">
+              <span class="zoom-badge">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+                  <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                  <path d="M12 10h-2v2H9v-2H7V9h2V7h1v2h2v1z"/>
+                </svg>
+                मोठे करा
+              </span>
+            </div>
+          </div>
+          <figcaption class="gallery-caption">
+            <span class="caption-tag">क्षण क्रमांक १</span>
+            <h4 class="caption-title">नातवाचा लाड आणि आजोबांचा प्रेमळ सहवास</h4>
+            <p class="caption-desc">दोन पिढ्यांचे अतूट नाते आणि चेहऱ्यावरील निर्मळ हास्य.</p>
+          </figcaption>
+        </figure>
+
+        <!-- Photo 2 -->
+        <figure class="gallery-card" data-index="1" tabindex="0" role="button" aria-label="छायाचित्र २ मोठे करा: आपल्या आजोबांचे प्रसन्न आणि आदरयुक्त रूप">
+          <div class="gallery-img-container">
+            <img src="Family Photographs/1000329573.jpg" 
+                 alt="श्री. रवींद्र सदाशिव पवार यांचे पारंपरिक वेशभूषेतील प्रसन्न रूप" 
+                 loading="lazy" 
+                 class="gallery-img">
+            <div class="gallery-overlay" aria-hidden="true">
+              <span class="zoom-badge">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+                  <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                  <path d="M12 10h-2v2H9v-2H7V9h2V7h1v2h2v1z"/>
+                </svg>
+                मोठे करा
+              </span>
+            </div>
+          </div>
+          <figcaption class="gallery-caption">
+            <span class="caption-tag">क्षण क्रमांक २</span>
+            <h4 class="caption-title">आजोबांचे प्रसन्न आणि आदरयुक्त रूप</h4>
+            <p class="caption-desc">संयमी नजर, कपाळावर टिळक आणि शांत व्यक्तिमत्त्व.</p>
+          </figcaption>
+        </figure>
+
+        <!-- Photo 3 -->
+        <figure class="gallery-card" data-index="2" tabindex="0" role="button" aria-label="छायाचित्र ३ मोठे करा: परंपरेची शिकवण देणारे आमचे आधारस्तंभ">
+          <div class="gallery-img-container">
+            <img src="Family Photographs/1000329574.jpg" 
+                 alt="आजोबा पारंपरिक वेशात राजमुद्रेजवळ उभे असलेले छायाचित्र" 
+                 loading="lazy" 
+                 class="gallery-img">
+            <div class="gallery-overlay" aria-hidden="true">
+              <span class="zoom-badge">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+                  <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                  <path d="M12 10h-2v2H9v-2H7V9h2V7h1v2h2v1z"/>
+                </svg>
+                मोठे करा
+              </span>
+            </div>
+          </div>
+          <figcaption class="gallery-caption">
+            <span class="caption-tag">क्षण क्रमांक ३</span>
+            <h4 class="caption-title">परंपरेची शिकवण देणारे आमचे आधारस्तंभ</h4>
+            <p class="caption-desc">शिवरायांच्या आदर्शांची आठवण करून देणारे संस्कार.</p>
+          </figcaption>
+        </figure>
+
+        <!-- Photo 4 -->
+        <figure class="gallery-card" data-index="3" tabindex="0" role="button" aria-label="छायाचित्र ४ मोठे करा: शांत, संयमी आणि कुटुंबावर अपार माया करणारे आजोबा">
+          <div class="gallery-img-container">
+            <img src="Family Photographs/1000329575.jpg" 
+                 alt="श्री. रवींद्र पवार शांतपणे आसनावर विराजमान असलेले छायाचित्र" 
+                 loading="lazy" 
+                 class="gallery-img">
+            <div class="gallery-overlay" aria-hidden="true">
+              <span class="zoom-badge">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+                  <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                  <path d="M12 10h-2v2H9v-2H7V9h2V7h1v2h2v1z"/>
+                </svg>
+                मोठे करा
+              </span>
+            </div>
+          </div>
+          <figcaption class="gallery-caption">
+            <span class="caption-tag">क्षण क्रमांक ४</span>
+            <h4 class="caption-title">शांत, संयमी आणि कुटुंबावर अपार माया</h4>
+            <p class="caption-desc">घरातील प्रत्येकाला आधार देणारा एक आश्वासक चेहरा.</p>
+          </figcaption>
+        </figure>
+
+        <!-- Photo 5 -->
+        <figure class="gallery-card" data-index="4" tabindex="0" role="button" aria-label="छायाचित्र ५ मोठे करा: कुटुंबाची शान आणि अखंड आशीर्वादाची सावली">
+          <div class="gallery-img-container">
+            <img src="Family Photographs/1000329576.jpg" 
+                 alt="श्री. रवींद्र पवार संपूर्ण पारंपरिक वेशात उभे असलेले छायाचित्र" 
+                 loading="lazy" 
+                 class="gallery-img">
+            <div class="gallery-overlay" aria-hidden="true">
+              <span class="zoom-badge">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+                  <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                  <path d="M12 10h-2v2H9v-2H7V9h2V7h1v2h2v1z"/>
+                </svg>
+                मोठे करा
+              </span>
+            </div>
+          </div>
+          <figcaption class="gallery-caption">
+            <span class="caption-tag">क्षण क्रमांक ५</span>
+            <h4 class="caption-title">कुटुंबाची शान आणि अखंड आशीर्वादाची सावली</h4>
+            <p class="caption-desc">स्वाभिमान आणि आत्मविश्वासाने परिपूर्ण असा भव्य वावर.</p>
+          </figcaption>
+        </figure>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- LIGHTBOX MODAL VIEWER -->
+  <div id="lightbox-modal" class="lightbox-modal" role="dialog" aria-modal="true" aria-label="छायाचित्र दर्शक" hidden>
+    <div class="lightbox-backdrop" id="lightbox-backdrop"></div>
+    <div class="lightbox-content">
+      <button id="lightbox-close-btn" class="lightbox-btn-close" type="button" aria-label="दर्शक बंद करा (Esc)">
+        ✕
+      </button>
+
+      <button id="lightbox-prev-btn" class="lightbox-nav-btn prev" type="button" aria-label="मागील छायाचित्र (डावा बाण)">
+        &#10094;
+      </button>
+
+      <div class="lightbox-image-wrap">
+        <img id="lightbox-img" src="" alt="" class="lightbox-img">
+        <div class="lightbox-caption-panel">
+          <div class="lightbox-counter" id="lightbox-counter">छायाचित्र १ / ५</div>
+          <h3 class="lightbox-title" id="lightbox-title"></h3>
+          <p class="lightbox-desc" id="lightbox-desc"></p>
+        </div>
+      </div>
+
+      <button id="lightbox-next-btn" class="lightbox-nav-btn next" type="button" aria-label="पुढील छायाचित्र (उजवा बाण)">
+        &#10095;
+      </button>
+    </div>
+  </div>
+
+  <!-- SECTION 4: INTERACTIVE MEMORY EXPERIENCE / CAROUSEL -->
+  <section id="memory-section" class="section-memory" aria-labelledby="memory-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-sub">हृदयस्पर्शी विचार</span>
+        <h2 id="memory-heading" class="section-title">कौटुंबिक आठवणींचा भावस्पर्शी प्रवास</h2>
+        <div class="gold-flourish" aria-hidden="true">❧ ❖ ❧</div>
+        <p class="section-description">
+          एकमेकांची साथ, कुटुंबाचे प्रेम आणि आजोबांचा सहवास हाच आमच्या जीवनाचा खरा ठेवा आहे.
+        </p>
+      </div>
+
+      <!-- Memory Carousel Container -->
+      <div class="memory-carousel" id="memory-carousel" role="region" aria-label="आठवणींचा कॅरोसेल">
+        <div class="memory-carousel-track" id="memory-carousel-track">
+
+          <!-- Slide 1 -->
+          <div class="memory-slide active" data-slide="0">
+            <div class="memory-card">
+              <div class="memory-card-image">
+                <img src="Family Photographs/1000329570.jpg" alt="नातवंडे आणि आजोबांचे प्रेम">
+              </div>
+              <div class="memory-card-text">
+                <span class="memory-badge">आठवण १ • नात्यांचा ओलावा</span>
+                <h3>पिढ्यांचे अतूट नाते आणि मायेचा स्पर्श</h3>
+                <p>
+                  आजोबांचा हात हातात धरून चालताना मिळणारा विश्वास आणि सुरक्षिततेची भावना जगातील कोणत्याही संपत्तीपेक्षा मोठी आहे. नातवंडांच्या आनंदात स्वतःचा आनंद शोधणारा त्यांचा स्वभाव घराला नेहमी आनंदी ठेवतो.
+                </p>
+                <div class="memory-quote">“नातवंडांचे हसू म्हणजे आजोबांच्या चेहऱ्यावरचे तेज!”</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 2 -->
+          <div class="memory-slide" data-slide="1">
+            <div class="memory-card">
+              <div class="memory-card-image">
+                <img src="Family Photographs/1000329573.jpg" alt="आजोबांचे व्यक्तिमत्त्व">
+              </div>
+              <div class="memory-card-text">
+                <span class="memory-badge">आठवण २ • संस्कार व आदर</span>
+                <h3>घराचा भक्कम आधार आणि आदरणीय स्थान</h3>
+                <p>
+                  कुटुंबातील प्रत्येक लहान-मोठ्या सदस्याला सन्मान आणि योग्य दिशा देणारे आमचे आजोबा. त्यांचा शब्द म्हणजे आम्हा सर्वांसाठी कायद्यासारखा आदरणीय आणि पाठीवरची शाबासकी म्हणजे सर्वांत मोठा पुरस्कार.
+                </p>
+                <div class="memory-quote">“संस्कारांची खरी शिदोरी आजोबांच्या शब्दांतून मिळते.”</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 3 -->
+          <div class="memory-slide" data-slide="2">
+            <div class="memory-card">
+              <div class="memory-card-image">
+                <img src="Family Photographs/1000329574.jpg" alt="परंपरा आणि निष्ठा">
+              </div>
+              <div class="memory-card-text">
+                <span class="memory-badge">आठवण ३ • संस्कृती व स्वाभिमान</span>
+                <h3>परंपरांची जोपासना आणि कर्तव्यनिष्ठा</h3>
+                <p>
+                  आपली संस्कृती, रीतिरिवाज आणि कुटुंबाची परंपरा टिकवून ठेवत नव्या पिढीला स्वाभिमानाने जगण्याचे बळ देणारे आजोबा हेच पवार घराण्याचे खरे वैभव आहेत.
+                </p>
+                <div class="memory-quote">“मूळ घट्ट असले की झाड वादळातही डगमगत नाही.”</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 4 -->
+          <div class="memory-slide" data-slide="3">
+            <div class="memory-card">
+              <div class="memory-card-image">
+                <img src="Family Photographs/1000329575.jpg" alt="शांत संयमी स्वभाव">
+              </div>
+              <div class="memory-card-text">
+                <span class="memory-badge">आठवण ४ • मायेची सावली</span>
+                <h3>शांत आणि धीरोदात्त व्यक्तिमत्त्व</h3>
+                <p>
+                  कोणत्याही कठीण प्रसंगात शांत राहून योग्य तो मार्ग काढण्याची आजोबांची कला आम्हा सर्वांना नेहमी थक्क करते. त्यांचा हा संयमी स्वभाव आम्हा सर्वांना आयुष्यात स्थिर राहण्याची प्रेरणा देतो.
+                </p>
+                <div class="memory-quote">“शांततेत अथांग सामर्थ्य असते, हे आजोबांकडून शिकलो.”</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 5 -->
+          <div class="memory-slide" data-slide="4">
+            <div class="memory-card">
+              <div class="memory-card-image">
+                <img src="Family Photographs/1000329576.jpg" alt="कुटुंबाचे खरे भूषण">
+              </div>
+              <div class="memory-card-text">
+                <span class="memory-badge">आठवण ५ • अखंड आशीर्वाद</span>
+                <h3>कुटुंबाची शान आणि अखंड वरदहस्त</h3>
+                <p>
+                  आज ७६ व्या वाढदिवसाच्या निमित्ताने आम्ही कृतज्ञता व्यक्त करतो की आम्हाला तुमच्यासारखे प्रेमळ, कर्तव्यदक्ष आणि संस्कारक्षम आजोबा लाभले. तुमचा आशीर्वाद हाच आमचा सर्वात मोठा आधार आहे.
+                </p>
+                <div class="memory-quote">“आजोबांची सोबत हीच देवाची सर्वात मोठी देणगी!”</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Carousel Navigation Controls -->
+        <div class="memory-nav-bar">
+          <button id="memory-prev-btn" class="memory-ctrl-btn" type="button" aria-label="मागील विचार">
+            &#10094; मागील
+          </button>
+          
+          <div class="memory-dots-group" id="memory-dots" role="tablist" aria-label="कॅरोसेल नेव्हिगेशन बिंदू">
+            <!-- Populated via JS -->
+          </div>
+
+          <button id="memory-next-btn" class="memory-ctrl-btn" type="button" aria-label="पुढील विचार">
+            पुढील &#10095;
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 5: INTERACTIVE BIRTHDAY SURPRISE -->
+  <section id="surprise-section" class="section-surprise" aria-labelledby="surprise-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-sub">सर्वात खास क्षण</span>
+        <h2 id="surprise-heading" class="section-title">आजोबा, तुमच्यासाठी खास भेट!</h2>
+        <div class="gold-flourish" aria-hidden="true">❧ ❖ ❧</div>
+        <p class="section-description">
+          हा एक खास आनंदाचा क्षण आहे. खालील सुवर्ण पेटीवर किंवा बटणावर क्लिक करून आजोबांसाठी खास संदेश उघडा.
+        </p>
+      </div>
+
+      <!-- Interactive Surprise Box Container -->
+      <div class="surprise-container">
+        
+        <!-- Closed Gift Box State -->
+        <div id="surprise-box-closed" class="surprise-box-closed">
+          <div class="gift-box-visual" id="gift-box-click-trigger" tabindex="0" role="button" aria-label="सरप्राइझ उघडण्यासाठी क्लिक करा">
+            <div class="gift-box-lid">
+              <div class="gift-ribbon-v"></div>
+              <div class="gift-bow">🎀</div>
+            </div>
+            <div class="gift-box-body">
+              <div class="gift-ribbon-h"></div>
+              <div class="gift-ribbon-v"></div>
+              <div class="gift-seal">
+                <span>७६</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="surprise-trigger-wrap">
+            <button id="surprise-open-btn" class="btn-surprise-reveal" type="button">
+              <span class="btn-sparkle" aria-hidden="true">✨</span>
+              <span class="btn-text">खास सरप्राइझ उघडा</span>
+              <span class="btn-sparkle" aria-hidden="true">✨</span>
+            </button>
+            <span class="surprise-hint">पेटीवर किंवा बटणावर क्लिक करा</span>
+          </div>
+        </div>
+
+        <!-- Revealed State (Reveals on Click) -->
+        <div id="surprise-revealed" class="surprise-revealed" hidden aria-live="polite">
+          <div class="reveal-card">
+            
+            <div class="reveal-header">
+              <span class="celebration-badge">✦ अमृतमहोत्सवी गौरव ✦</span>
+              <h3 class="reveal-heading">आमचा आधारवड</h3>
+              <div class="gold-line-divider" aria-hidden="true"></div>
+            </div>
+
+            <div class="reveal-content">
+              <div class="reveal-image-badge">
+                <img src="Family Photographs/1000329573.jpg" alt="आमचा आधारवड - श्री. रवींद्र सदाशिव पवार">
+              </div>
+
+              <blockquote class="reveal-tribute-text">
+                <strong>“आजोबा, जसा विशाल वटवृक्ष आपल्या विस्तीर्ण शाखांनी उन्हातान्हात शीतल सावली देतो, तसेच तुम्ही आमच्या संपूर्ण पवार कुटुंबाला तुमच्या अपार मायेची आणि आशीर्वादांची सावली दिली आहे.”</strong>
+              </blockquote>
+
+              <p class="reveal-detail-text">
+                तुमच्या ७६ व्या वाढदिवसाच्या या ऐतिहासिक आणि मंगल क्षणी आम्ही सर्व नातवंडे आणि संपूर्ण परिवार तुमच्या चरणी कृतज्ञतापूर्वक नतमस्तक होतो.
+              </p>
+
+              <div class="wishes-grid">
+                <div class="wish-item">
+                  <span class="wish-icon">🌸</span>
+                  <h4>उत्तम आरोग्य</h4>
+                  <p>निरोगी, उत्साही आणि आनंदी जीवन</p>
+                </div>
+                <div class="wish-item">
+                  <span class="wish-icon">✨</span>
+                  <h4>दीर्घायुष्य</h4>
+                  <p>शतायुषी होवोत आमचे लाडके आजोबा</p>
+                </div>
+                <div class="wish-item">
+                  <span class="wish-icon">🕊️</span>
+                  <h4>मनःशांती</h4>
+                  <p>समाधान आणि शांतीने भरलेला प्रत्येक क्षण</p>
+                </div>
+                <div class="wish-item">
+                  <span class="wish-icon">💖</span>
+                  <h4>अखंड प्रेम</h4>
+                  <p>कुटुंबाचे अखंड प्रेम आणि सन्मान</p>
+                </div>
+              </div>
+
+              <div class="reveal-concluding-note">
+                <p>वाढदिवसाच्या अनंत आणि लाख लाख शुभेच्छा, आजोबा!</p>
+              </div>
+
+              <button id="surprise-replay-btn" class="btn-replay-petals" type="button">
+                🌸 पुन्हा फुलांची उधळण करा 🌸
+              </button>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Marigold Petal Celebration Canvas (Full Screen overlay for surprise) -->
+  <canvas id="marigold-canvas" class="marigold-canvas" aria-hidden="true"></canvas>
+
+  <!-- SECTION 6: CLOSING MESSAGE & FOOTER -->
+  <footer id="closing-section" class="section-closing" aria-labelledby="closing-heading">
+    <div class="container">
+      
+      <div class="closing-card">
+        <div class="auspicious-emblem" aria-hidden="true">ॐ</div>
+        
+        <h2 id="closing-heading" class="closing-title">सस्नेह कृतज्ञता आणि आशीर्वाद</h2>
+        
+        <div class="closing-divider" aria-hidden="true">❧ ❖ ❧</div>
+
+        <div class="closing-message-body">
+          <p class="closing-verse">
+            तुमचं प्रेम, तुमचा आशीर्वाद आणि तुमची साथ आमच्यासाठी अनमोल आहे.
+          </p>
+          <p class="closing-verse">
+            तुमच्या आयुष्यात आनंद, उत्तम आरोग्य आणि समाधान सदैव नांदो.
+          </p>
+          <p class="closing-grand-wish">
+            वाढदिवसाच्या मनःपूर्वक शुभेच्छा, आजोबा!
+          </p>
+        </div>
+
+        <div class="closing-signature-block">
+          <span class="signature-label">आपला नम्र आणि सदैव ऋणी परिवार:</span>
+          <strong class="signature-name">नातवंडे व समस्त पवार परिवार</strong>
+          <span class="signature-date">१६ ऑक्टोबर २०२६</span>
+        </div>
+
+        <div class="back-to-top-wrap">
+          <a href="#opening-screen" class="btn-back-to-top" aria-label="पानाच्या सुरुवातीला जा">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
+              <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/>
+            </svg>
+            सुरवातीला जा
+          </a>
+        </div>
+      </div>
+
+      <!-- Transparent Licensing & Attribution Note -->
+      <div class="site-credits">
+        <p>
+          <strong>संगीत संदर्भ व परवाना:</strong> संकेतस्थळावर वाजणारे पारंपारिक इंग्रजी वाढदिवस गायन (English Vocal Rendition: "Happy Birthday to You") हे मुक्त परवान्यांतर्गत (Public Domain / Internet Archive) साभार समाविष्ट करण्यात आले आहे.
+        </p>
+        <p>
+          सदर संकेतस्थळ श्री. रवींद्र सदाशिव पवार यांच्या ७६ व्या वाढदिवसाच्या निमित्ताने प्रेमाने तयार करण्यात आले आहे. सर्व मूळ कौटुंबिक छायाचित्रे सुरक्षित आहेत.
+        </p>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Single Audio Element Instance -->
+  <audio id="birthday-audio" preload="auto">
+    <source src="assets/audio/happy-birthday-vocal.mp3?v=english" type="audio/mpeg">
+    आपला ब्राऊझर ऑडिओ घटकास समर्थन देत नाही.
+  </audio>
+
+  <script src="app.js"></script>
+</body>
+</html>
