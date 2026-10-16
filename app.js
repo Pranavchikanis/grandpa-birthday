@@ -49,11 +49,14 @@
   const audioVolumeSlider = document.getElementById('audio-volume-slider');
   const audioTimeDisplay = document.getElementById('audio-time-display');
 
+  const entranceModal = document.getElementById('entrance-modal');
+  const entranceStartBtn = document.getElementById('entrance-start-btn');
+
   const autoplayBanner = document.getElementById('autoplay-banner');
   const autoplayStartBtn = document.getElementById('autoplay-start-btn');
   const autoplayDismissBtn = document.getElementById('autoplay-dismiss-btn');
 
-  let audioInitialized = false;
+  let audioStarted = false;
 
   function formatTime(seconds) {
     if (isNaN(seconds) || seconds < 0) return '0:00';
@@ -88,41 +91,79 @@
     audioTimeDisplay.textContent = `${cur} / ${dur}`;
   }
 
-  function attemptAutoplay() {
-    if (!audio) return;
+  function hideModals() {
+    if (entranceModal) entranceModal.classList.remove('show');
+    if (autoplayBanner) autoplayBanner.classList.remove('show');
+  }
 
-    // Default configuration: starting volume at reasonable level, play once (no looping)
+  function startAudio(userTriggered = false) {
+    if (!audio) return Promise.reject(new Error('Audio element not found'));
+
+    // Set audio configuration: comfortable volume, single play (no loop)
     audio.volume = 0.8;
     audio.loop = false;
 
-    const playPromise = audio.play();
+    return audio.play()
+      .then(() => {
+        console.log('Birthday song playback is active.');
+        audioStarted = true;
+        hideModals();
+        cleanupGestureListeners();
+        updatePlayerUI();
+      })
+      .catch((err) => {
+        console.warn('Autoplay unprompted status:', err.name);
+        // If unprompted play was blocked by browser policy, display royal entrance modal
+        if (!audioStarted && entranceModal) {
+          entranceModal.classList.add('show');
+        }
+        updatePlayerUI();
+      });
+  }
 
-    if (playPromise !== undefined) {
-      playPromise
-        .then(() => {
-          // Autoplay succeeded!
-          console.log('Audio autoplay started successfully.');
-          audioInitialized = true;
-          if (autoplayBanner) autoplayBanner.classList.remove('show');
-          updatePlayerUI();
-        })
-        .catch((err) => {
-          // Autoplay was blocked by browser policy (expected in modern browsers without prior interaction)
-          console.warn('Autoplay blocked by browser policy. Displaying fallback interaction banner.', err.name);
-          audioInitialized = true;
-          if (autoplayBanner) {
-            autoplayBanner.classList.add('show');
-          }
-          updatePlayerUI();
-        });
+  // Global gesture listeners to trigger audio on very first user interaction
+  const gestureEvents = ['pointerdown', 'touchstart', 'click', 'keydown', 'scroll', 'wheel'];
+
+  function handleFirstGesture() {
+    if (!audioStarted && audio && audio.paused) {
+      startAudio(true);
+    } else {
+      cleanupGestureListeners();
     }
   }
 
-  // Play / Pause toggle
-  audioPlayBtn.addEventListener('click', () => {
+  function setupGestureListeners() {
+    gestureEvents.forEach((evt) => {
+      window.addEventListener(evt, handleFirstGesture, { capture: true, passive: true });
+    });
+  }
+
+  function cleanupGestureListeners() {
+    gestureEvents.forEach((evt) => {
+      window.removeEventListener(evt, handleFirstGesture, { capture: true });
+    });
+  }
+
+  // Entrance modal button & backdrop listeners
+  if (entranceStartBtn) {
+    entranceStartBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      startAudio(true);
+    });
+  }
+
+  if (entranceModal) {
+    entranceModal.addEventListener('click', () => {
+      startAudio(true);
+    });
+  }
+
+  // Play / Pause toggle on floating player widget
+  audioPlayBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
     if (audio.paused) {
       audio.play().catch(e => console.error('Audio play error:', e));
-      if (autoplayBanner) autoplayBanner.classList.remove('show');
+      hideModals();
     } else {
       audio.pause();
     }
@@ -131,24 +172,22 @@
 
   // Fallback banner start button
   if (autoplayStartBtn) {
-    autoplayStartBtn.addEventListener('click', () => {
-      audio.play()
-        .then(() => {
-          autoplayBanner.classList.remove('show');
-          updatePlayerUI();
-        })
-        .catch(e => console.error('Error starting audio on fallback button click:', e));
+    autoplayStartBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      startAudio(true);
     });
   }
 
   if (autoplayDismissBtn) {
-    autoplayDismissBtn.addEventListener('click', () => {
-      autoplayBanner.classList.remove('show');
+    autoplayDismissBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (autoplayBanner) autoplayBanner.classList.remove('show');
     });
   }
 
   // Mute toggle
-  audioMuteBtn.addEventListener('click', () => {
+  audioMuteBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
     audio.muted = !audio.muted;
     updatePlayerUI();
   });
@@ -162,12 +201,17 @@
   });
 
   // Audio Event Listeners
-  audio.addEventListener('play', updatePlayerUI);
+  audio.addEventListener('play', () => {
+    audioStarted = true;
+    hideModals();
+    cleanupGestureListeners();
+    updatePlayerUI();
+  });
   audio.addEventListener('pause', updatePlayerUI);
   audio.addEventListener('timeupdate', updatePlayerUI);
   audio.addEventListener('loadedmetadata', updatePlayerUI);
 
-  // Play once - when ended, keep paused at end or reset
+  // Play once - when ended, keep paused at end
   audio.addEventListener('ended', () => {
     console.log('Birthday song playback completed.');
     updatePlayerUI();
@@ -554,23 +598,18 @@
     initMemoryCarousel();
     initCanvas();
 
-    // Attempt autoplay upon page load (with fallback handling)
-    attemptAutoplay();
+    // Setup global gesture listener so ANY touch/click/scroll anywhere triggers playback
+    setupGestureListeners();
 
-    // Quick start listener on any user interaction if blocked
-    const startAudioOnFirstClick = () => {
-      if (audio && audio.paused && !audioInitialized) {
-        audio.play().then(() => {
-          if (autoplayBanner) autoplayBanner.classList.remove('show');
-          updatePlayerUI();
-        }).catch(() => {});
-      }
-      window.removeEventListener('click', startAudioOnFirstClick);
-      window.removeEventListener('touchstart', startAudioOnFirstClick);
-    };
+    // Attempt automatic playback immediately on page open
+    startAudio(false);
+  });
 
-    window.addEventListener('click', startAudioOnFirstClick, { once: true });
-    window.addEventListener('touchstart', startAudioOnFirstClick, { once: true });
+  // Also verify on window load for browsers that wait for all assets before media play
+  window.addEventListener('load', () => {
+    if (!audioStarted && audio && audio.paused) {
+      startAudio(false);
+    }
   });
 
 })();

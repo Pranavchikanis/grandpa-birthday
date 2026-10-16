@@ -344,6 +344,141 @@ a {
 }
 
 /* --------------------------------------------------------------------------
+   4b. Interactive Entrance Modal (Guarantees Autoplay across All Browsers)
+   -------------------------------------------------------------------------- */
+.entrance-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 3000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+.entrance-modal.show {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.entrance-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(26, 17, 10, 0.82);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.entrance-card {
+  position: relative;
+  z-index: 1;
+  background: linear-gradient(135deg, #FFFDF9 0%, #FAF5EC 100%);
+  border: 2px solid var(--color-gold-bright);
+  border-radius: var(--radius-lg);
+  padding: 38px 30px;
+  max-width: 500px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), 0 0 35px rgba(212, 175, 55, 0.35);
+  transform: scale(0.92);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.entrance-modal.show .entrance-card {
+  transform: scale(1);
+}
+
+.entrance-emblem {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-gold-dark);
+  letter-spacing: 0.15em;
+  margin-bottom: 8px;
+}
+
+.entrance-sub {
+  display: inline-block;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--color-saffron);
+  margin-bottom: 8px;
+}
+
+.entrance-title {
+  font-family: var(--font-display);
+  font-size: 1.9rem;
+  color: var(--color-brown);
+  line-height: 1.3;
+  margin-bottom: 6px;
+}
+
+.entrance-tagline {
+  font-size: 1.05rem;
+  font-style: italic;
+  color: var(--color-brown-light);
+  margin-bottom: 22px;
+}
+
+.entrance-music-prompt {
+  background: rgba(158, 107, 36, 0.08);
+  border: 1px solid var(--border-gold-strong);
+  border-radius: var(--radius-md);
+  padding: 14px 18px;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-align: left;
+}
+
+.entrance-note-anim {
+  font-size: 1.8rem;
+  animation: gentle-wobble 2s infinite ease-in-out;
+}
+
+.entrance-music-prompt p {
+  font-size: 0.95rem;
+  color: var(--color-brown);
+  font-weight: 600;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.btn-entrance-start {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: linear-gradient(135deg, #D4AF37 0%, #9E6B24 50%, #543D2E 100%);
+  color: #FFF;
+  font-size: 1.15rem;
+  font-weight: 700;
+  padding: 15px 32px;
+  border-radius: var(--radius-pill);
+  box-shadow: 0 10px 25px rgba(212, 175, 55, 0.4);
+  animation: pulse-glow 2s infinite;
+  transition: all var(--transition-fast);
+  width: 100%;
+}
+
+.btn-entrance-start:hover {
+  transform: scale(1.03);
+  box-shadow: 0 14px 35px rgba(212, 175, 55, 0.6);
+}
+
+.entrance-hint {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  margin-top: 12px;
+}
+
+/* --------------------------------------------------------------------------
    5. Autoplay Blocked Fallback Notification Banner
    -------------------------------------------------------------------------- */
 .autoplay-banner {

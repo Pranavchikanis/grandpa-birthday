@@ -65,6 +65,31 @@
     </div>
   </aside>
 
+  <!-- Interactive Entrance Modal (Guarantees immediate audio playback across all browsers) -->
+  <div id="entrance-modal" class="entrance-modal" role="dialog" aria-modal="true" aria-label="संगीतमय वाढदिवस प्रवेशद्वार">
+    <div class="entrance-backdrop"></div>
+    <div class="entrance-card">
+      <div class="entrance-emblem">॥ श्री गणेशाय नमः ॥</div>
+      <span class="entrance-sub">✦ अमृतमय ७६ वा वाढदिवस ✦</span>
+      <h2 class="entrance-title">आदरणीय श्री. रवींद्र सदाशिव पवार</h2>
+      <p class="entrance-tagline">“आठवणींचा सुंदर प्रवास — आपल्या लाडक्या आजोबांसाठी”</p>
+      
+      <div class="entrance-music-prompt">
+        <span class="entrance-note-anim" aria-hidden="true">🎵</span>
+        <p>आजोबांच्या वाढदिवसाचे खास इंग्रजी गायन व कौटुंबिक आठवणींचा नजराणा तयार आहे!</p>
+      </div>
+
+      <button id="entrance-start-btn" class="btn-entrance-start" type="button">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true">
+          <path d="M8 5v14l11-7z"/>
+        </svg>
+        <span>वाढदिवसाचं गाणं सुरू करा</span>
+      </button>
+      
+      <span class="entrance-hint">किंवा पुढे जाण्यासाठी कुठेही स्पर्श करा</span>
+    </div>
+  </div>
+
   <!-- Autoplay Blocked Fallback Notification Banner -->
   <div id="autoplay-banner" class="autoplay-banner" role="alert" aria-live="polite">
     <div class="autoplay-banner-inner">
@@ -668,7 +693,7 @@
   </footer>
 
   <!-- Single Audio Element Instance -->
-  <audio id="birthday-audio" preload="auto">
+  <audio id="birthday-audio" preload="auto" autoplay playsinline>
     <source src="assets/audio/happy-birthday-vocal.mp3?v=english" type="audio/mpeg">
     आपला ब्राऊझर ऑडिओ घटकास समर्थन देत नाही.
   </audio>
